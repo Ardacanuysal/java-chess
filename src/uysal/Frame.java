@@ -215,29 +215,29 @@ public class Frame extends JFrame {
                 if (game.getBoard(i, j) == 0) {
                     stones[i][j].setIcon(null);
                 } else if (game.getBoard(i, j) == 1) {
-                    stones[i][j].setIcon(bp);
+                    stones[i][j].setIcon(wp);//bp
                 } else if (game.getBoard(i, j) == -1) {
-                    stones[i][j].setIcon(wp);
+                    stones[i][j].setIcon(bp);//wp
                 } else if (game.getBoard(i, j) == 2) {
-                    stones[i][j].setIcon(bb);
+                    stones[i][j].setIcon(wb);//bb
                 } else if (game.getBoard(i, j) == -2) {
-                    stones[i][j].setIcon(wb);
+                    stones[i][j].setIcon(bb);//wb
                 } else if (game.getBoard(i, j) == 3) {
-                    stones[i][j].setIcon(bh);
+                    stones[i][j].setIcon(wh);//bh
                 } else if (game.getBoard(i, j) == -3) {
-                    stones[i][j].setIcon(wh);
+                    stones[i][j].setIcon(bh);//wh
                 } else if (game.getBoard(i, j) == 4) {
-                    stones[i][j].setIcon(br);
+                    stones[i][j].setIcon(wr);//br
                 } else if (game.getBoard(i, j) == -4) {
-                    stones[i][j].setIcon(wr);
+                    stones[i][j].setIcon(br);//wr
                 } else if (game.getBoard(i, j) == 5) {
-                    stones[i][j].setIcon(bq);
+                    stones[i][j].setIcon(wq);//bq
                 } else if (game.getBoard(i, j) == -5) {
-                    stones[i][j].setIcon(wq);
+                    stones[i][j].setIcon(bq);//wq
                 } else if (game.getBoard(i, j) == 6) {
-                    stones[i][j].setIcon(bk);
+                    stones[i][j].setIcon(wk);//bk
                 } else if (game.getBoard(i, j) == -6) {
-                    stones[i][j].setIcon(wk);
+                    stones[i][j].setIcon(bk);//wk
                 } else {
                     System.out.println("error!");
                     System.exit(3);
@@ -276,21 +276,21 @@ public class Frame extends JFrame {
             }
 
             // castling
-            if ((color.contentEquals("White") && stones[sourceX][sourceY].getIcon() == wk
-                    && stones[7][7].getIcon() == wr && sourceX == 7 && sourceY == 4 && ax == 7 && ay == 6
+            if ((color.contentEquals("White") && stones[sourceX][sourceY].getIcon() == bk
+                    && stones[7][7].getIcon() == br && sourceX == 7 && sourceY == 4 && ax == 7 && ay == 6
                     && stones[7][5].getIcon() == null && stones[7][6].getIcon() == null)
-                    || (color.contentEquals("Black") && stones[sourceX][sourceY].getIcon() == bk
-                    && stones[0][7].getIcon() == br && sourceX == 0 && sourceY == 4 && ax == 0 && ay == 6
+                    || (color.contentEquals("Black") && stones[sourceX][sourceY].getIcon() == wk
+                    && stones[0][7].getIcon() == wr && sourceX == 0 && sourceY == 4 && ax == 0 && ay == 6
                     && stones[0][5].getIcon() == null && stones[0][6].getIcon() == null)) {
                 game.castling(color, "Small");
                 changeTurn();
             } else if ((color.contentEquals("White") && sourceX == 7 && sourceY == 4 && ax == 7 && ay == 2
-                    && stones[7][4].getIcon() == wk && stones[7][3].getIcon() == null && stones[7][2].getIcon() == null
-                    && stones[7][1].getIcon() == null && stones[7][0].getIcon() == wr)
+                    && stones[7][4].getIcon() == bk && stones[7][3].getIcon() == null && stones[7][2].getIcon() == null
+                    && stones[7][1].getIcon() == null && stones[7][0].getIcon() == br)
                     || (color.contentEquals("Black") && sourceX == 0 && sourceY == 4 && ax == 0 && ay == 2
-                    && stones[0][4].getIcon() == bk && stones[0][3].getIcon() == null
+                    && stones[0][4].getIcon() == wk && stones[0][3].getIcon() == null
                     && stones[0][2].getIcon() == null && stones[0][1].getIcon() == null && stones[0][0]
-                    .getIcon() == br)) {
+                    .getIcon() == wr)) {
                 game.castling(color, "Big");
                 changeTurn();
             } else {
@@ -310,8 +310,8 @@ public class Frame extends JFrame {
                         loop:
                         for (int i = 0; i < stones.length; i++) {
                             for (int j = 0; j < stones.length; j++) {
-                                if ((color.contentEquals("Black") && stones[i][j].getIcon() == wk)
-                                        || (color.contentEquals("White") && stones[i][j].getIcon() == bk)) {
+                                if ((color.contentEquals("Black") && stones[i][j].getIcon() == bk)
+                                        || (color.contentEquals("White") && stones[i][j].getIcon() == wk)) {
                                     stones[i][j].setBackground(Color.red);
                                     if (game.checkMate(color, i, j)) {
                                         JOptionPane.showMessageDialog(null, "CHECKMATE!");
